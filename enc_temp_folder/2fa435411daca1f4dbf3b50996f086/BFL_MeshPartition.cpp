@@ -121,7 +121,6 @@ void UBFL_MeshPartition::CalculateGridCellsWithSplineDirections(const TArray<FVe
         //Add to Array
         GridCells.Add(NewGridCell);
     }
-    //hi
     
 }
 
