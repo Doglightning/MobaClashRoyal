@@ -1,14 +1,30 @@
-Binaries
-DerivedDataCache
-Intermediate
-Saved
-.vscode
-.vs
-*.VC.db
-*.opensdf
-*.opendb
-*.sdf
+# Ignore all engine content
+/Engine/*
+!/Engine/Plugins
+!/Engine/Plugins/Runtime/*
+
+# Ignore OS-specific files
+Thumbs.db
+Desktop.ini
+
+# Ignore Unreal build files
+*.dll
+*.pdb
+*.exe
+*.obj
+*.o
+*.lib
+*.so
+*.dylib
+*.exp
+*.pyc
+*.pyo
+*.log
+*.vs
 *.sln
-*.suo
-*.xcodeproj
-*.xcworkspace
+
+# Ignore intermediate files
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
