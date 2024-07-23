@@ -66,6 +66,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
 		static TArray<FBPS_GridCell> GetDirectionArray();
+
+	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
+		static void ExportGridCellsToJson(const FString& FilePath);
+
+	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
+		static void ExportGridCellsToCustomFormat(const FString& FilePath);
 	
 private:
 	// Array to store grid cells

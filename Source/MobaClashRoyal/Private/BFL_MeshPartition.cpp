@@ -185,8 +185,47 @@ TArray<FBPS_GridCell> UBFL_MeshPartition::GetDirectionArray()
     return GridCells;
 }
 
+void UBFL_MeshPartition::ExportGridCellsToJson(const FString& FilePath)
+{
+    FString filePath = TEXT("C:\\Users\\antho\\Downloads\\output.json");
+    // Prepare the JSON string
+    FString JsonString = TEXT("{ \"MapArray\": [");
+
+    for (const FBPS_GridCell& Cell : GridCells)
+    {
+        FString CellData = FString::Printf(TEXT("{\"X\":%d,\"Y\":%d,\"DX\":%f,\"DY\":%f},"),
+            static_cast<int32>(Cell.CellPosition.X), static_cast<int32>(Cell.CellPosition.Y), Cell.Direction1.X, Cell.Direction1.Y);
+
+        JsonString += CellData;
+    }
+
+    // Remove the last comma and close the array
+    JsonString.RemoveAt(JsonString.Len() - 1);
+    JsonString += TEXT("]}");
+
+    // Write to file
+    FFileHelper::SaveStringToFile(JsonString, *filePath);
+}
 
 
 
 
+void UBFL_MeshPartition::ExportGridCellsToCustomFormat(const FString& FilePath)
+{
+    FString filePath = TEXT("C:\\Users\\antho\\Downloads\\output.txt");
+    // Prepare the output string
+    FString OutputString;
+
+    for (const FBPS_GridCell& Cell : GridCells)
+    {
+        FString CellData = FString::Printf(TEXT("\"%d,%d\": {%.3f, %.3f},"),
+            static_cast<int32>(Cell.CellPosition.X), static_cast<int32>(Cell.CellPosition.Y),
+            Cell.Direction1.X, Cell.Direction1.Y);
+
+        OutputString += CellData;
+    }
+
+    // Write to file
+    FFileHelper::SaveStringToFile(OutputString, *filePath);
+}
 
