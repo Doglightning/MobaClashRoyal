@@ -56,9 +56,7 @@ public:
 		static void InitializeSplineData(const TArray<AActor*>& Splines);
 
 	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
-		static void CalculateGridCellsWithSplineDirections(const TArray<FVector>& GridCenterCells, const TArray<AActor*>& Splines, const TArray<AActor*>& BlockingActors);
-	UFUNCTION()
-		static bool IsCellBlocked(const FVector& CellCenter, float CellSize, const TArray<AActor*>& BlockingActors);
+		static void CalculateGridCellsWithSplineDirections(const TArray<FVector>& GridCenterCells, const TArray<AActor*>& Splines);
 
 	UFUNCTION()
 		static FVector FindClosestPointOnSpline(const USplineComponent* SplineComponent, const FVector& TargetLocation, int32 NumPoints);

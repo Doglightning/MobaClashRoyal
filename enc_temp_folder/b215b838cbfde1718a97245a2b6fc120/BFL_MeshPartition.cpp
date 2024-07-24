@@ -63,35 +63,14 @@ void UBFL_MeshPartition::InitializeSplineData(const TArray<AActor*>& Splines)
     }
 }
 
-bool UBFL_MeshPartition::IsCellBlocked(const FVector& CellCenter, float CellSize, const TArray<AActor*>& BlockingActors) {
-    FCollisionQueryParams QueryParams(FName(TEXT("CellOverlap")), true);
-    FCollisionShape CellShape = FCollisionShape::MakeBox(FVector(CellSize / 2));  // Using a box shape for the grid cell
-
-    for (AActor* Actor : BlockingActors) {
-        TArray<UPrimitiveComponent*> Components;
-        Actor->GetComponents<UPrimitiveComponent>(Components);
-        for (UPrimitiveComponent* Volume : Components) {
-            if (Volume && Volume->OverlapComponent(CellCenter, FQuat::Identity, CellShape)) {
-                return true;  // Cell is blocked
-            }
-        }
-    }
-
-    return false;  // Cell is not blocked
-}
-
-void UBFL_MeshPartition::CalculateGridCellsWithSplineDirections(const TArray<FVector>& GridCenterCells, const TArray<AActor*>& Splines, const TArray<AActor*>& BlockingActors)
+void UBFL_MeshPartition::CalculateGridCellsWithSplineDirections(const TArray<FVector>& GridCenterCells, const TArray<AActor*>& Splines)
 {
     InitializeSplineData(Splines);
     GridCells.Empty();
 
     // Iterate through each grid center cell
     for (const FVector& CellPosition : GridCenterCells)
-
     {
-        if (IsCellBlocked(CellPosition, cellSize, BlockingActors)) {
-            continue;  // Skip this cell as it's within a blocking volume
-        }
         // Initialize a new grid cell
         FBPS_GridCell NewGridCell;
         NewGridCell.CellPosition = CellPosition;
