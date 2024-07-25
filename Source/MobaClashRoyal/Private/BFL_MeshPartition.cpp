@@ -100,10 +100,13 @@ void UBFL_MeshPartition::CalculateGridCellsWithSplineDirections(const TArray<FVe
         USplineComponent* ClosestSpline = nullptr;
         FVector ClosestPointOnSpline;
         FVector ClosestSplineDirection;
-
-        // Find the closest spline and direction for the current grid cell
         float ClosestDistanceSquared = FLT_MAX;
         AActor* ClosestSplineActor = nullptr; // New variable to store the closest spline actor
+
+       
+
+   
+        
 
         for (const FSplineData& IteratedSplineData : SplineData)
         {
@@ -119,14 +122,17 @@ void UBFL_MeshPartition::CalculateGridCellsWithSplineDirections(const TArray<FVe
 
                 if (DistanceSquared < ClosestDistanceSquared)
                 {
-                    FVector ClosestWorldLocation2 = SplineComponent->FindLocationClosestToWorldLocation(NewGridCell.CellPosition, ESplineCoordinateSpace::World);
+                    
+
+                    ClosestSplineDirection = SplineComponent->FindLocationClosestToWorldLocation(NewGridCell.CellPosition, ESplineCoordinateSpace::World);
                     ClosestDistanceSquared = DistanceSquared;
                     ClosestSpline = SplineComponent;
-                    ClosestPointOnSpline = ClosestWorldLocation2;
+                    ClosestPointOnSpline = ClosestWorldLocation;
                     ClosestSplineActor = IteratedSplineData.SplineActor; // Update the closest spline actor
 
                     
                 }
+               
             }
         }
 

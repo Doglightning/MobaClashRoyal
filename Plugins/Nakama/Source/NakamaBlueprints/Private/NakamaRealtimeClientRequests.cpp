@@ -1251,3 +1251,4 @@ void UNakamaRealtimeClientRPC::Activate()
 
 	RealtimeClient->RPC(FunctionId, Payload, successCallback, errorCallback);
 }
+
