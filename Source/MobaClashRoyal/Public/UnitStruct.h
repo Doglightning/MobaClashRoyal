@@ -55,6 +55,9 @@ struct FStructureStruct
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
     FVector Position;
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    FString State;
+
 };
 
 USTRUCT(BlueprintType)
