@@ -256,3 +256,24 @@ void UBFL_MeshPartition::ExportGridCellsToCustomFormat(const FString& FilePath)
     FFileHelper::SaveStringToFile(OutputString, *filePath);
 }
 
+void UBFL_MeshPartition::ExportGridCellsToCppFormat(const FString& FilePath)
+{
+    FString filePath = TEXT("C:\\Users\\antho\\Downloads\\output.txt");
+    // Prepare the output string to format as C++ map initialization code
+    FString OutputString = TEXT("{{\n");
+
+    for (const FBPS_GridCell& Cell : GridCells)
+    {
+        FString CellData = FString::Printf(TEXT("{\"%d,%d\", {%f, %f}},\n"),
+            static_cast<int32>(Cell.CellPosition.X), static_cast<int32>(Cell.CellPosition.Y),
+            Cell.Direction1.X, Cell.Direction1.Y);
+
+        OutputString += CellData;
+    }
+
+    // Close the map initializer
+    OutputString += TEXT("}};\n");
+
+    // Write to file
+    FFileHelper::SaveStringToFile(OutputString, *filePath);
+}

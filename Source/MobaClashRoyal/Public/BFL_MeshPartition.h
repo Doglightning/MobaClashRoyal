@@ -74,6 +74,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
 		static void ExportGridCellsToCustomFormat(const FString& FilePath);
+
+	UFUNCTION(BlueprintCallable, Category = "Grid Partition")
+		static void ExportGridCellsToCppFormat(const FString& FilePath);
 	
 private:
 	// Array to store grid cells

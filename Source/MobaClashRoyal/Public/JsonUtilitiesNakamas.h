@@ -5,6 +5,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "JsonUtilitiesNakamas.generated.h"
 
+
+
 UCLASS()
 class MOBACLASHROYAL_API UJsonUtilitiesNakamas : public UBlueprintFunctionLibrary
 {
@@ -18,4 +20,7 @@ public:
     // Function to parse JSON string and return array of unit JSON strings
     UFUNCTION(BlueprintCallable, Category = "Utilities|Json")
     static bool ParseJsonIntArray(const FString& JsonString, const FString& ArrayFieldName, TArray<int32>& OutIntegers, FString& OutStringRepresentation);
+
 };
+
+

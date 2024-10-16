@@ -19,6 +19,9 @@ struct FUnitStruct
     float CurrentHP;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    float MaxHP;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
     FVector Position;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
@@ -34,10 +37,28 @@ struct FUnitStruct
     int attackFrame;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    int DamageFrameSP;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    int AttackRate;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    int EndFrameSP;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    int SpRate;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
     float CurrentSP;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
-    FString animation;
+    TArray<FString> EffectsList;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    bool ChargedSP;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Unit")
+    bool Stunned;
 
 };
 
